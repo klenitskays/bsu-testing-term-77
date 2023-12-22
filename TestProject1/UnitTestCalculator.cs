@@ -21,6 +21,66 @@ public class Tests
 
     //    Assert.That(actual, Is.EqualTo(expected));
     //}
+    private static IEnumerable<string> NumberTestCases()
+    {
+        yield return @"
+        var a = 10;
+        var b = 20;
+        return a + b;
+    ";
+        yield return @"
+        var x = 3.14;
+        var y = 2.5;
+        return x * y;
+    ";
+        yield return @"
+        var c = 10;
+        var d = 3;
+        return c / d;        // Деление целых чисел (результат - целое число)
+    ";
+        yield return @"
+        var e = 5;
+        var f = 2;
+        return e % f;        // Остаток от деления (5 % 2 = 1)
+    ";
+    }
+
+    private static IEnumerable<string> ObjectTestCases()
+    {
+        yield return @"
+        var obj = {
+            name: 'John',
+            age: 30,
+            city: 'New York'
+        };
+        return obj.name;
+    ";
+        yield return @"
+        var person = {
+            name: 'Alice',
+            age: 25,
+            city: 'London'
+        };
+        return person.age;
+    ";
+        yield return @"
+        var car = {
+            brand: 'Tesla',
+            model: 'Model S',
+            year: 2022
+        };
+        car.year = 2023;     // Изменение значения свойства объекта
+        return car.year;
+    ";
+        yield return @"
+        var book = {
+            title: 'Harry Potter',
+            author: 'J.K. Rowling',
+            price: 29.99
+        };
+        return book.pages;   // Обращение к несуществующему свойству объекта
+    ";
+    }
 
     [TestCase(".5", .5)]
     [TestCase("5.0", 5)]
